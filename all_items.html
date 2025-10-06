@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Items - ExpiryBuddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="all_items.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">ExpiryBuddy</div>
+        <ul class="nav-links">
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="all_items.html" id="active">All Items</a></li>
+        <li><a href="javascript:openForm()">Add Item</a></li>
+        </ul>
+    </nav>
+
+    <!-- Items Section -->
+    <section class="all-items">
+        <h2>All Items</h2>
+        <div id="items-list" class="items-list"></div>
+    </section>
+
+    <!-- Add/Edit Item Form -->
+    <div class="container" id="itemForm" style="display:none;">
+        <div class="form-box">
+        <h2 id="form-title">Add New Item</h2>
+
+        <div class="input-group">
+            <label for="itemname">Item Name:</label>
+            <input type="text" id="itemname" placeholder="Enter item name" required />
+        </div>
+
+        <div class="input-group">
+            <label for="category">Category</label>
+            <select id="category" required>
+            <option value="">Select category</option>
+            <option value="fruits">Fruits</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="dairy">Dairy</option>
+            <option value="grains">Grains</option>
+            <option value="medicine">Medicine</option>
+            <option value="others">Others</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="date" id="expiry" required />
+        </div>
+
+        <div class="input-group">
+            <label for="quantity">Quantity (optional)</label>
+            <input type="number" id="quantity" placeholder="Enter quantity" />
+        </div>
+
+        <div class="btns">
+            <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+            <button type="submit" class="btn" onclick="saveItem()">Save</button>
+        </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="all_items.js"></script>
+</body>
+</html>

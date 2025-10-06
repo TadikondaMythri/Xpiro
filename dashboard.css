@@ -1,0 +1,336 @@
+body {
+    margin: 10px;
+    font-family: 'Poppins', sans-serif, 'Eagle Lake';
+    background: #e8efe9;
+}
+
+/* Navbar */
+.navbar {
+    background: #fff;
+    color: black;
+    padding: 6px 80px;
+    border-radius: 12px;
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    padding: 0px 60px;
+    font-size: 28px;
+}
+.logo span {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: Almendra SC;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 120px;
+}
+
+.nav-links a, .logout-btn {
+    color: rgb(9, 9, 9);
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.logout-btn {
+    background: #f5efe6;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.2px;
+    margin: 0px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: rgb(18, 120, 18);  
+}
+
+.logout-btn:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+    font-size: 16px;
+    margin: 5px;
+    padding: 20px 15px;
+    gap: 15px;
+}
+
+.card .count {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+}
+.card .count span {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.stat-icon {
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+    background: #eafbf3;
+    border-radius: 7px;
+    display: flex;
+    align-items: right;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 33px;
+    opacity: 0.9;
+}
+
+.red-text { color: #e83e2b; }
+.orange-text { color: #e87817; }
+
+/* Rows */
+.items {
+    margin: 30px;
+}
+.row {
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.5);
+}
+
+.rows {
+    margin: 10px;
+    margin-bottom: 50px;
+    gap: 0px;
+}
+
+.row.red {
+    border: solid;
+    border-color: #e74c3c;
+    background-color: #f9eeee;
+    color: black;
+    text-align: center;
+}
+.row.orange {
+    border: solid;
+    border-color: orange;
+    background-color: #f7f1e7;
+    color: black;
+    text-align: center;
+}
+.row.green {
+    border: solid;
+    border-color: green;
+    background-color: rgb(233, 248, 233);
+    color: black;
+    text-align: center;
+}
+
+/* Item Box Styling */
+.item-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px;
+    transition: transform 0.2s;
+}
+
+.item-box:hover {
+    transform: scale(1.004);
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.item-expiry {
+    font-size: 14px;
+    color: #555;
+}
+
+.item-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.item-actions button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: solid;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 80px;
+    gap: 30px;
+}
+
+.item-actions .used-btn {
+    background-color: #fff;
+    color: #016101;
+    border-color: #016101;
+}
+
+.item-actions .discard-btn {
+    background-color: #fff;
+    color: #222;
+}
+
+.item-actions .used-btn:hover {
+    background-color: #047507;
+    border: none;
+    color: white;
+    font-size: 17px;
+}
+
+.item-actions .discard-btn:hover {
+    background-color: #535353;
+    color: white;
+    font-size: 17px;
+    border: none;
+}
+
+/* Form Popup */
+.container {
+    display: none;
+    position: fixed;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    top: 90px;
+    left: 475px;
+    z-index: 1000;
+}
+
+.form-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 350px;
+}
+
+.form-box h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: bold;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+.input-group select option {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn.cancel {
+    background: #fa4530;
+    color: #fff;
+}
+.btn:not(.cancel) {
+    background: #4caf50;
+    color: #fff;
+}
+
+.btn:not(.cancel):hover {
+    background-color: #43a047;
+}
+
+.btn.cancel:hover {
+    background-color: red;
+}
+
+
+
+/* Floating Add Button */
+.add-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #119211;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
