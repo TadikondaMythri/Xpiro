@@ -3,7 +3,7 @@
 **Xpiro** is a full-stack web application that helps users track the expiry dates of groceries, medicines, and other items — so nothing goes to waste.  
 Users can add items, view upcoming expirations, and manage their inventory efficiently.
 
---
+---
 
 ##  Features
 
@@ -13,7 +13,7 @@ Users can add items, view upcoming expirations, and manage their inventory effic
 -  **Edit & Delete Options** — Manage items directly from your dashboard.
 -  **MongoDB Atlas Integration** — Data is stored securely in the cloud.
 
---
+---
 
 ##  Tech Stack
 
@@ -25,7 +25,7 @@ Users can add items, view upcoming expirations, and manage their inventory effic
 | Authentication | JSON Web Token (JWT) |
 | Hosting | Render (Backend), Vercel (Frontend) |
 
---
+---
 
 # Deployment Link
 https://xpiro.vercel.app
