@@ -20,12 +20,11 @@
         <a href="dashboard.html">Home</a>
         <a href="all_items.html" id="active">All Items</a>
         <a href="javascript:void(0)" id="add-item-mobile">Add Item</a>
-        <a href="javascript:void(0)" id="logout-mobile">Logout</a>
     </nav>
 
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">ExpiryBuddy</div>
+        <div class="logo">Xpiro</div>
         <ul class="nav-links">
         <li><a href="dashboard.html">Home</a></li>
         <li><a href="all_items.html" id="active">All Items</a></li>
@@ -126,17 +125,6 @@
                 try { window.saveItem && window.saveItem(); } catch(e) { console.error(e); }
             }
             closeForm();
-        });
-        function safeLogout() {
-            try { logout(); } catch (e) { localStorage.removeItem('token'); window.location.href='signin.html'; }
-        }
-        logoutMobile && logoutMobile.addEventListener('click', safeLogout);
-        logoutDesktop && logoutDesktop.addEventListener('click', safeLogout);
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                closeSidebar();
-            }
         });
     </script>
 </body>
