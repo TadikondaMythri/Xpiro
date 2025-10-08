@@ -1,0 +1,202 @@
+/* hide mobile elements by default (so desktop stays clean) */
+.mobile-header,
+.sidebar {
+    display: none;
+}
+
+/* MOBILE STYLES: apply only on small screens */
+@media (max-width: 768px) {
+
+  /* show the mobile header */
+.mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.hamburger {
+    font-size: 26px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+  /* hide desktop nav on mobile */
+.navbar {
+    display: none !important;
+}
+
+  /* SIDEBAR (slide-in) */
+.sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    max-width: 80%;
+    background: #119211; /* dark green */
+    color: #fff;
+    overflow-x: hidden;
+    transition: width 0.25s ease;
+    z-index: 1100;
+    padding-top: 48px;
+}
+
+  /* when open, width becomes 250px (or up to 80% on tiny screens) */
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 14px 20px;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.sidebar a:hover { background: rgba(255,255,255,0.08); }
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+  /* MAIN CONTENT adjustments */
+.stats {
+    padding: 10px;
+    margin: 8px;
+    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+    padding: 12px;
+    border-radius: 16px;
+    gap: 8px;
+}
+
+.card .count span {
+    font-size: 22px;
+}
+
+.items {
+    padding: 8px;
+}
+
+.rows h2 {
+    font-size: 18px;
+    margin: 6px 6px;
+}
+
+.row {
+    padding: 8px;
+    border-radius: 16px;
+}
+
+  /* item box adjustments for mobile */
+.item-box {
+    margin: 5px 6px;
+    padding: 12px;
+    border-radius: 10px;
+    gap: 8px;
+}
+
+.item-name {
+    font-size: 16px;
+}
+
+.item-expiry, .item-category, .item-quantity {
+    font-size: 13px;
+}
+
+.item-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.item-actions button {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 999px;
+}
+
+  /* Floating add button smaller and spaced for mobile */
+.add-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+    bottom: 22px;
+    right: 16px;
+}
+
+  /* Modal / form fixes for mobile */
+.container {
+    display: none; /* controlled via JS */
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    z-index: 1200;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0,0,0,0.35);
+}
+
+.form-box {
+    width: 100%;
+    max-width: 520px;
+    padding: 8px 70px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.input-group input, .input-group select {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.btns {
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn {
+    padding: 10px;
+    font-size: 15px;
+}
+
+  /* ensure large desktop-specific left positioning does not affect mobile */
+.container, .form-box { left: auto !important; right: auto !important; }
+
+  /* small improvements */
+body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+}

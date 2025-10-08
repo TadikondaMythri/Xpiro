@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Items - ExpiryBuddy</title>
+    <title>All Items - Xpiro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="all_items.css">
+    <link rel="stylesheet" href="dashboard_mobile.css">
 </head>
 <body>
+    <header class="mobile-header" role="banner" aria-hidden="true">
+        <button id="hamburger" class="hamburger" aria-label="Open menu">&#9776;</button>
+        <div class="mobile-title">Xpiro</div>
+    </header>
+    <nav id="sidebar" class="sidebar" aria-hidden="true">
+        <button class="closebtn" id="sidebar-close" aria-label="Close menu">&times;</button>
+        <a href="dashboard.html">Home</a>
+        <a href="all_items.html" id="active">All Items</a>
+        <a href="javascript:void(0)" id="add-item-mobile">Add Item</a>
+        <a href="javascript:void(0)" id="logout-mobile">Logout</a>
+    </nav>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">ExpiryBuddy</div>
@@ -68,5 +81,63 @@
 
     <!-- Scripts -->
     <script src="all_items.js"></script>
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const hamburger = document.getElementById("hamburger");
+        const sidebarClose = document.getElementById("sidebar-close");
+        const addItemMobile = document.getElementById('add-item-mobile');
+        const itemForm = document.getElementById('itemForm');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const saveBtn = document.getElementById('save-btn');
+
+        function openSidebar() {
+        sidebar.classList.add("open");
+        document.body.style.overflow = "hidden";
+        }
+
+        function closeSidebar() {
+        sidebar.classList.remove("open");
+        document.body.style.overflow = "";
+        }
+
+        hamburger?.addEventListener("click", openSidebar);
+        sidebarClose?.addEventListener("click", closeSidebar);
+        sidebar.querySelectorAll("a").forEach(a => a.addEventListener("click", closeSidebar));
+
+        function openForm() {
+            itemForm.style.display = 'flex';
+            itemForm.setAttribute('aria-hidden','false');
+            document.getElementById('form-title').textContent = 'Add New Item';
+        }
+        function closeForm() {
+            itemForm.style.display = 'none';
+            itemForm.setAttribute('aria-hidden','true');
+            const f = ['itemname','category','expiry','quantity'];
+            f.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+        }   
+
+        addItemMobile && addItemMobile.addEventListener('click', openForm);
+        cancelBtn && cancelBtn.addEventListener('click', closeForm);
+
+        saveBtn && saveBtn.addEventListener('click', () => {
+            if (typeof saveItem === 'function') {
+                saveItem();
+            } else {
+                try { window.saveItem && window.saveItem(); } catch(e) { console.error(e); }
+            }
+            closeForm();
+        });
+        function safeLogout() {
+            try { logout(); } catch (e) { localStorage.removeItem('token'); window.location.href='signin.html'; }
+        }
+        logoutMobile && logoutMobile.addEventListener('click', safeLogout);
+        logoutDesktop && logoutDesktop.addEventListener('click', safeLogout);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
+    </script>
 </body>
 </html>

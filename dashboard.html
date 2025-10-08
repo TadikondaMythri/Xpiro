@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" /> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xpiro — dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <title>ExpiryBuddy Dashboard</title>
+
     <link rel="stylesheet" href="dashboard.css" />
-</head> 
-<body> 
-    <!-- Navbar -->
-    <nav class="navbar">
+    <link rel="stylesheet" href="dashboard_mobile.css" />
+</head>
+<body>
+    <header class="mobile-header" role="banner" aria-hidden="true">
+        <button id="hamburger" class="hamburger" aria-label="Open menu">&#9776;</button>
+        <div class="mobile-title">Xpiro</div>
+    </header>
+    <nav id="sidebar" class="sidebar" aria-hidden="true">
+        <button class="closebtn" id="sidebar-close" aria-label="Close menu">&times;</button>
+        <a href="dashboard.html">Home</a>
+        <a href="all_items.html">All Items</a>
+        <a href="javascript:void(0)" id="add-item-mobile">Add Item</a>
+        <a href="javascript:void(0)" id="logout-mobile">Logout</a>
+    </nav>
+
+    <nav class="navbar" role="navigation" aria-hidden="false">
         <div class="logo"><span>X</span>piro</div>
         <ul class="nav-links">
-            <li><a href="dashboard.html">Home</a></li>
-            <li><a href="all_items.html">All Items</a></li>
-            <li>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fa fa-sign-out">&nbsp;&nbsp;</i>Logout
-                </button>
-            </li>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="all_items.html">All Items</a></li>
+        <li><button class="logout-btn" id="logout-desktop"><i class="fa fa-sign-out">&nbsp;&nbsp;</i>Logout</button></li>
         </ul>
     </nav>
 
@@ -30,136 +40,167 @@
                 <p>Groceries Tracked</p>
                 <span id="groceriesCount">0</span>
             </div>
-            <div class="stat-icon">
-                <i class="fas fa-apple-alt"></i>
+            <div class="stat-icon"><i class="fas fa-apple-alt"></i></div>
             </div>
-        </div>
 
-        <div class="card">
+            <div class="card">
             <div class="count">
                 <p>Medicines Tracked</p>
                 <span id="medsCount">0</span>
             </div>
-            <div class="stat-icon">
-                <i class="fas fa-capsules"></i>
+            <div class="stat-icon"><i class="fas fa-capsules"></i></div>
             </div>
-        </div>
 
-        <div class="card red-text">
+            <div class="card red-text">
             <div class="count">
-                <p>Expires Today &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p>Expires Today</p>
                 <span id="todayCount">0</span>
             </div>
-            <div class="stat-icon">
-                <i class="fas fa-exclamation-circle" id="circle"></i>
+            <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
             </div>
-        </div>
 
-        <div class="card orange-text">
+            <div class="card orange-text">
             <div class="count">
                 <p>Expires This Week</p>
                 <span id="weekCount">0</span>
             </div>
-            <div class="stat-icon">
-                <i class="fas fa-clock" id="clock"></i>
-            </div>
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Items -->
     <section class="items">
         <div class="rows">
             <h2>Expiring Today</h2>
-            <div class="row red" id="list-today">
-                <p>No items expiring today</p>
-            </div>
+            <div class="row red" id="list-today"><p>No items expiring today</p></div>
         </div>
 
         <div class="rows">
             <h2>Expiring This Week</h2>
-            <div class="row orange" id="list-week">
-                <p>No items expiring this Week</p>
-            </div>
+            <div class="row orange" id="list-week"><p>No items expiring this Week</p></div>
         </div>
 
         <div class="rows">
             <h2>Safe</h2>
-            <div class="row green" id="list-safe">
-                <p>No safe items</p>
-            </div>
+            <div class="row green" id="list-safe"><p>No safe items</p></div>
         </div>
     </section>
 
     <!-- Floating Add Button -->
-    <button class="add-btn" onclick="openForm()">+</button>
+    <button class="add-btn" id="add-floating">+</button>
 
-    <!-- Add Item Form (Popup Modal) -->
-    <div class="container" id="itemForm">
+    <!-- Add Item Modal -->
+    <div class="container" id="itemForm" aria-hidden="true">
         <div class="form-box">
-            <h2>Add New Item</h2>
+            <h2 id="form-title">Add New Item</h2>
 
             <div class="input-group">
                 <label for="itemname">Item Name:</label>
-                <input type="text" id="itemname" placeholder="Enter item name" required />
+                <input type="text" id="itemname" placeholder="Enter item name" />
             </div>
 
             <div class="input-group">
                 <label for="category">Category</label>
-                <select id="category" required>
-                    <option value="">Select category</option>
-                    <option value="fruits">Fruits</option>
-                    <option value="vegetables">Vegetables</option>
-                    <option value="dairy">Dairy</option>
-                    <option value="grains">Grains</option>
-                    <option value="medicine">Medicine</option>
-                    <option value="others">Others</option>
+                <select id="category">
+                <option value="">Select category</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="dairy">Dairy</option>
+                <option value="grains">Grains</option>
+                <option value="medicine">Medicine</option>
+                <option value="others">Others</option>
                 </select>
             </div>
 
             <div class="input-group">
                 <label for="expiry">Expiry Date</label>
-                <input type="date" id="expiry" required />
+                <input type="date" id="expiry" />
             </div>
 
             <div class="input-group">
                 <label for="quantity">Quantity (optional)</label>
-                <input type="number" id="quantity" placeholder="Enter quantity" />
+                <input type="number" id="quantity" min="1" value="1" />
             </div>
 
             <div class="btns">
-                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                <button type="submit" class="btn" onclick="saveItem()">Save</button>
+                <button type="button" class="btn cancel" id="cancel-btn">Cancel</button>
+                <button type="button" class="btn" id="save-btn">Save</button>
             </div>
         </div>
     </div>
 
+    <script src="dashboard.js" defer></script>
+
     <script>
+        const sidebar = document.getElementById('sidebar');
+        const hamburger = document.getElementById('hamburger');
+        const sidebarClose = document.getElementById('sidebar-close');
+        const addFloating = document.getElementById('add-floating');
+        const addItemMobile = document.getElementById('add-item-mobile');
+        const logoutMobile = document.getElementById('logout-mobile');
+        const logoutDesktop = document.getElementById('logout-desktop');
+        const addBtn = document.getElementById('add-floating');
+        const itemForm = document.getElementById('itemForm');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const saveBtn = document.getElementById('save-btn');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebar.setAttribute('aria-hidden','false');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebar.setAttribute('aria-hidden','true');
+            document.body.style.overflow = '';
+        }
+        function toggleSidebar() {
+            if (sidebar.classList.contains('open')) closeSidebar(); else openSidebar();
+        }
+
+        hamburger && hamburger.addEventListener('click', toggleSidebar);
+        sidebarClose && sidebarClose.addEventListener('click', closeSidebar);
+        sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        closeSidebar();
+        }));
+
         function openForm() {
-            document.getElementById("itemForm").style.display = "flex";
+            itemForm.style.display = 'flex';
+            itemForm.setAttribute('aria-hidden','false');
+            document.getElementById('form-title').textContent = 'Add New Item';
         }
-
         function closeForm() {
-            document.getElementById("itemForm").style.display = "none";
-            clearFormFields();
-        }
+            itemForm.style.display = 'none';
+            itemForm.setAttribute('aria-hidden','true');
+            const f = ['itemname','category','expiry','quantity'];
+            f.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+        }   
 
-        function clearFormFields() {
-            document.getElementById("itemname").value = "";
-            document.getElementById("category").value = "";
-            document.getElementById("expiry").value = "";
-            document.getElementById("quantity").value = "";
+    addFloating && addFloating.addEventListener('click', openForm);
+    addItemMobile && addItemMobile.addEventListener('click', openForm);
+    cancelBtn && cancelBtn.addEventListener('click', closeForm);
+
+    saveBtn && saveBtn.addEventListener('click', () => {
+        if (typeof saveItem === 'function') {
+            saveItem();
+        } else {
+            try { window.saveItem && window.saveItem(); } catch(e) { console.error(e); }
         }
+        closeForm();
+        });
+
+        function safeLogout() {
+            try { logout(); } catch (e) { localStorage.removeItem('token'); window.location.href='signin.html'; }
+        }
+        logoutMobile && logoutMobile.addEventListener('click', safeLogout);
+        logoutDesktop && logoutDesktop.addEventListener('click', safeLogout);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
+        });
     </script>
-
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            sessionStorage.clear();
-            window.location.href = "signin.html";
-        }
-    </script>
-
-    <script src="dashboard.js"></script>
 
 </body>
 </html>
