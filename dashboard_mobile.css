@@ -99,9 +99,10 @@
 }
 
 .card {
-    padding: 12px;
+    padding: 7px;
+    margin: 0px;
+    gap: 4px;
     border-radius: 16px;
-    gap: 8px;
 }
 
 .card .count span {
