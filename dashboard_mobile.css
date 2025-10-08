@@ -111,6 +111,7 @@
 .items {
     padding: 8px;
     margin: 0px;
+    width: 100%;
 }
 
 .rows h2 {
