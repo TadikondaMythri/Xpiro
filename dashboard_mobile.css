@@ -101,6 +101,8 @@
 .card {
     padding: 7px;
     margin: 0px;
+    margin-top: 8px;
+    margin-bottom: 6px;
     gap: 4px;
     border-radius: 16px;
 }
