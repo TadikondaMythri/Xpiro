@@ -10,6 +10,8 @@
   /* show the mobile header */
 .mobile-header {
     display: flex;
+    width: 100%;
+    margin: 0px;
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
@@ -90,8 +92,8 @@
   /* MAIN CONTENT adjustments */
 .stats {
     padding: 10px;
-    margin: 8px;
-    gap: 8px;
+    margin: 0px;
+    gap: 6px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -108,11 +110,12 @@
 
 .items {
     padding: 8px;
+    margin: 0px;
 }
 
 .rows h2 {
     font-size: 18px;
-    margin: 6px 6px;
+    
 }
 
 .row {
